@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>All games</h1>
+  <div class="cards">
+    <%@boardgames.each do |boardgame| %>
+      <div class="card-pick mt-3">
+        <%= image_tag "https://cf.geekdo-images.com/wOZ1EZRFzwG4v3oVAcgDQg__thumb/img/-hGuNRktptEkdhHSoITUG_Na7U0=/fit-in/200x150/filters:strip_icc()/pic5196896.jpg", alt: "default"%>
+        <div class="card-pick-info">
+          <h3><%=boardgame.name %></h3>
+          <p><%= boardgame.category %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
