@@ -1,0 +1,59 @@
+body:has(.banner) {
+  overflow: hidden;
+}
+
+.banner {
+  background-size: cover;
+  background-position: center;
+  align-content: center;
+  height: 100vh;
+  h1 {
+    margin: 0;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    font-size: 32px;
+    font-weight: bold;
+  }
+  p {
+    font-size: 20px;
+    color: white;
+    opacity: .7;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
+}
+
+.board {
+
+  background-size: cover;
+  background-position: center;
+  width: 50px ;
+
+}
+
+.active {
+
+  padding-top: 2px;
+}
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #670BFF;
+  transition: background 0.3s ease;
+}
+
+.carousel {
+  height: 50vh;
+  width: 40%;
+  overflow: hidden;
+  margin-top: 30px;
+
+  .carousel-item.active {
+    padding-top: 50;
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
