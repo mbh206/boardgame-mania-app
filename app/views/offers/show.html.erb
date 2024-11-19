@@ -1,15 +1,15 @@
-<div class="container text-center">
-  <h1 class="my-5"><%= @offer.title %></h1>
+<div class="container">
+  <h1 class="my-5 text-center"><%= @offer.title %></h1>
   <div class="row">
-    <div class="col">
+    <div class="col col-6">
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-        <% @offer.photos.each do |photo| %>
-              <div class="carousel-item active">
-                <%= cl_image_tag photo.key, class: "d-block w-100", alt: "..." %>
-              </div>
-        <% end %>
-          </div>
+        <div class="carousel-inner">
+          <% @offer.photos.each_with_index do |photo, index| %>
+            <div class="carousel-item <%= index == 0 ? "active" : "" %>">
+              <%= cl_image_tag photo.key, class: "d-block w-100", alt: "..." %>
+            </div>
+          <% end %>
+        </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
@@ -19,12 +19,23 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      <%= @offer.user.name %>
+      <div class="py-5">
+        <h2>Owner: <%= @offer.user.name %></h2>
+      </div>
     </div>
-    <div class="col">
-      <%= simple_form_for [@user, @offer] do |f| %>
-        <%= f.input :start_date %>
-      <% end %>
+    <div class="col col-5 offset-1">
+      <div class="text-center">
+        <h2>Make a Booking!</h2>
+        <%= simple_form_for [@offer, @booking], data: {controller: 'datepicker', class: "d-flex flex-column"} do |f| %>
+          <p>Start Date: <%= f.date_field :start_date, class: 'rental-date' %></p>
+          <p>End Date: <%= f.date_field :end_date, class: 'rental-date' %></p>
+          <%= f.submit class: "btn btn-info" %>
+        <% end %>
+      </div>
+      <div class="my-5 text-left">
+        <h4>Description:</h4>
+        <p><%= @offer.description %></p>
+      </div>
     </div>
   </div>
 </div>
