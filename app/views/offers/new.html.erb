@@ -1,0 +1,8 @@
+<%= simple_form_for(@offer) do |f|%>
+  <%= f.association :boardgame, as: :select, prompt: 'Select'%>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit %>
+<% end %>
