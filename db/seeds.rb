@@ -164,3 +164,5 @@ test_offer.user = second_user
 test_offer.description = "No description"
 test_offer.title = "Good offer on Caledonia"
 test_offer.price = 15.0
+
+test_offer.save!
