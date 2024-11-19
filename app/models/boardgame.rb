@@ -1,4 +1,4 @@
 class Boardgame < ApplicationRecord
-  has_many :offers
-  validates :name, presence: true 
+  has_many :offers, dependent: :destroy
+  validates :name, presence: true
 end

@@ -76,3 +76,4 @@ end
 #Added gems
 gem 'devise'
 gem 'ostruct'
+gem "cloudinary"
