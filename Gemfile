@@ -73,5 +73,6 @@ group :test do
   gem "selenium-webdriver"
 end
 
-#Added gems 
+#Added gems
 gem 'devise'
+gem 'ostruct'
