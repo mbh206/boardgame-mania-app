@@ -1,4 +1,5 @@
 require "open-uri"
+require "nokogiri"
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -21,10 +22,10 @@ require "open-uri"
 #
 # end
 #
-print("Resetting all boardgames...")
+puts("Resetting all boardgames...")
 Boardgame.destroy_all
 
-print("Creating Boardgames...")
+puts("Creating Boardgames...")
 catan = Boardgame.new(
   name: "Catan",
   category: "strategy",
@@ -135,6 +136,29 @@ caledonia = Boardgame.new(
 )
 caledonia.save!
 
+
+vabanque = Boardgame.new(
+  name: "Vabanque",
+  category: "Strategy",
+  player_count: 4,
+  description: "A party meets for a game in the casino. After the players determine how much money can be won at the casino tables they play their character cards and move their pawns to a casino table. The payout can be multiplied or lost to card sharks. In the beginning the stakes are low but they increase from round to round.",
+  poster: "https://cf.geekdo-images.com/wOZ1EZRFzwG4v3oVAcgDQg__original/img/XY5qcnbpQr6E-uCk0LmSEWssu48=/0x0/filters:format(jpeg)/pic5196896.jpg",
+  thumbnail: "https://cf.geekdo-images.com/wOZ1EZRFzwG4v3oVAcgDQg__thumb/img/-hGuNRktptEkdhHSoITUG_Na7U0=/fit-in/200x150/filters:strip_icc()/pic5196896.jpg",
+  complexity: 3.46
+)
+vabanque.save!
+
+voidfall = Boardgame.new(
+  name: "voidfall",
+  category: "Strategy",
+  player_count: 4,
+  description: "For centuries, the Novarchs, descendants of the royal House of Novarchon, have ruled with an iron fist over the feudalistic galactic empire of humankind, the Domineum. During this time, they brought stunning technological innovation and scientific advancements to their domain.",
+  poster: "https://cf.geekdo-images.com/hItZjdDTNuaCZ7fEztwcUQ__original/img/gIhusTrYRr_2JQGEv0zuSgLtuUo=/0x0/filters:format(jpeg)/pic6153324.jpg",
+  thumbnail: "https://cf.geekdo-images.com/hItZjdDTNuaCZ7fEztwcUQ__thumb/img/Ov6eWR87PZ2O1XYQtXMO6KvfzOg=/fit-in/200x150/filters:strip_icc()/pic6153324.jpg",
+  complexity: 3.46
+)
+voidfall.save!
+
 ####USERS######
 
 # create_table "users", force: :cascade do |t|
@@ -182,6 +206,9 @@ second_user.save!
 print("Resetting all Offers...")
 Offer.destroy_all
 
+
+print("Creating offers...")
+
 file = URI.parse("https://cf.geekdo-images.com/JpP6IyLwAnvCZX8kuiGPEg__imagepage/img/dITvv1dckVXuWiz-hWY-If-y2dU=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3771122.jpg").open
 test_offer = Offer.new(title: "", description: "")
 test_offer.photos.attach(io: file, filename: "first", content_type: "image/png")
@@ -196,3 +223,12 @@ test_offer.title = "Good offer on Caledonia"
 test_offer.price = 15.0
 
 test_offer.save!
+
+50.times.each do 
+  offer = Offer.new(title: Faker::Marketing.buzzwords, description: Faker::Company.bs, price: rand(1..100))
+  file = URI.parse("https://cf.geekdo-images.com/JpP6IyLwAnvCZX8kuiGPEg__imagepage/img/dITvv1dckVXuWiz-hWY-If-y2dU=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3771122.jpg").open
+  offer.photos.attach(io: file, filename: Faker::Alphanumeric.alphanumeric(number: 10), content_type: "image/png" )
+  offer.boardgame = Boardgame.all.sample
+  offer.user = User.all.sample
+  offer.save
+end
