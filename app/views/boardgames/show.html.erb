@@ -1,16 +1,16 @@
-<div class="container d-flex">
-  <div class="col-4">
-    <h2><%=@boardgame.name%></h2>
+<div class="d-flex p-0 m-0 w-100">
+  <div class="col-3 bg-secondary bg-gradient text-white p-4 m-0">
+    <h2 class="text-center fw-light"><%=@boardgame.name%></h2>
     <ul class="list-unstyled">
-      <li><%= image_tag @boardgame.poster, alt: "Poster", width: "75%" %></li>
-      <li><b>category:</b> <%=@boardgame.category%></li>
-      <li><b>number of players:</b> <%=@boardgame.player_count%></li>
-      <li><b>description:</b> <%=@boardgame.description%></li>
+      <li><%= image_tag @boardgame.poster, alt: "Poster", width: "100%" %></li>
+      <li><span class="cat-title">category:</span class="cat-title"> <%=@boardgame.category%></li>
+      <li><span class="cat-title">number of players:</span class="cat-title"> <%=@boardgame.player_count%></li>
+      <li><span class="cat-title">description:</span class="cat-title"> <%=@boardgame.description%></li>
     </ul>
   </div>
-  <div class="col-8">
-    <h2>Boardgame offers</h2>
-    <table class="table">
+  <div class="py-4 col-9 overflow-auto vh-100 m-0">
+    <h2 class="text-center">Current Boardgame Rental Offers</h2>
+    <table class="table w-100 m-0">
       <thead>
         <tr>
           <th scope="col">#</th>

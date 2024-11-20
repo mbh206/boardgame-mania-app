@@ -8,4 +8,10 @@
   height: 100%;
   top: 0;
   left: 0;
+  color:black;
+}
+
+.offer-link:nth-child(odd){
+  color:black;
+  background-color: #f2f2f2;
 }
