@@ -28,6 +28,6 @@ class OffersController < ApplicationController
         :price,
         :description,
         :title,
-        :photos)
+        photos: [])
   end
 end
