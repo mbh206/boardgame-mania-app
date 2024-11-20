@@ -2,11 +2,10 @@ class OffersController < ApplicationController
   def show
     @booking = Booking.new
     @offer = Offer.find(params[:id])
-    # raise
   end
 
   def new
-    @boardgames = Boardgame.all 
+    @boardgames = Boardgame.all
     @offer = Offer.new
   end
   def create
@@ -15,20 +14,19 @@ class OffersController < ApplicationController
     if @offer.save
       redirect_to offer_path(@offer)
     else
-      raise
       render 'new', status: :unprocessable_entity
     end
   end
 
-  private 
+  private
 
   def offers_params
         params.require(:offer).permit(
-        :boardgame_id, 
-        :user_id, 
-        :price, 
+        :boardgame_id,
+        :user_id,
+        :price,
         :description,
         :title,
         :photos)
-  end 
+  end
 end
