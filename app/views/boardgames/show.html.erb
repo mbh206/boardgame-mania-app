@@ -13,20 +13,20 @@
     <table class="table w-100 m-0">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Title</th>
-          <th scope="col">Description</th>
-          <th scope="col">Price</th>
+          <th class="px-4" scope="col">#</th>
+          <th class="px-4" scope="col">Title</th>
+          <th class="px-4" scope="col">Description</th>
+          <th class="px-4" scope="col">Price</th>
         </tr>
       </thead>
       <tbody>
         <%@boardgame.offers.each_with_index do |offer, index|%>
           <tr class= "offer-link-parent">
-            <th scope="row"><%= index + 1%></th>
-            <td><%= offer.title%></td>
-            <td><%= offer.description%></td>
-            <td><%= offer.price%></td>
-            <td><%= link_to "", offer_path(offer), class: "offer-link" %></td>
+            <td class="px-4" scope="row"><%= index + 1%></td>
+            <td class="px-4"><%= offer.title%></td>
+            <td class="px-4"><%= offer.description%></td>
+            <td class="px-4">$<%= offer.price%></td>
+            <td class="px-4"><%= link_to "", offer_path(offer), class: "offer-link" %></td>
           </tr>
         <%end%>
       </tbody>
