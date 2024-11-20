@@ -3,7 +3,6 @@ class OffersController < ApplicationController
   def show
     @booking = Booking.new
     @offer = Offer.find(params[:id])
-    # raise
   end
 
   def new
@@ -30,4 +29,5 @@ class OffersController < ApplicationController
         :description,
         :title,
         :photos)
-
+  end
+end
