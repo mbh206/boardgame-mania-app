@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
     @offer = Offer.find(params[:offer_id])
     @booking = Booking.new(bookings_params)
     @booking.user = current_user
-    @booking.offer =@offer
+    @booking.offer = @offer
     if @booking.save
       redirect_to user_path(current_user)
     else
@@ -26,11 +26,8 @@ class BookingsController < ApplicationController
 
   def bookings_params
       params.require(:booking).permit(
-      :boardgame_id,
-      :user_id,
-      :price,
-      :description,
-      :title,
-      :photos)
+        :start_date,
+        :end_date
+      )
   end
 end
