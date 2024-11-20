@@ -42,7 +42,7 @@
                     <tr class="user-link-parent">
                       <td class="px-3"><%= Offer.find(booking.offer_id).title %></td>
                       <td class="px-3"><%= Offer.find(booking.offer_id).description%></td>
-                      <td class="px-3"><%= booking.total_price %></td>
+                      <td class="px-3">$<%= booking.total_price %></td>
                       <td class="px-3"><%= booking.start_date %></td>
                       <td class="px-3"><%= booking.end_date %></td>
                       <td><%= link_to "", offer_path(booking.offer_id), class: "user-link" %></td>
@@ -76,7 +76,7 @@
                     <tr class="user-link-parent">
                       <td class="px-3"><%= offer.title %></td>
                       <td class="px-3"><%= offer.description %></td>
-                      <td class="px-3"><%= offer.price %></td>
+                      <td class="px-3">$<%= offer.price %></td>
                       <td class="px-3"><%= link_to "", offer_path(offer), class: "user-link" %></td>
                     </tr>
                   <% end %>
