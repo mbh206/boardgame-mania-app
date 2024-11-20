@@ -77,3 +77,4 @@ end
 gem 'devise'
 gem 'ostruct'
 gem "cloudinary"
+gem 'faker'
