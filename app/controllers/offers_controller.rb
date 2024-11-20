@@ -15,7 +15,6 @@ class OffersController < ApplicationController
     if @offer.save
       redirect_to offer_path(@offer)
     else
-      raise
       render 'new', status: :unprocessable_entity
     end
   end
@@ -29,6 +28,6 @@ class OffersController < ApplicationController
         :price, 
         :description,
         :title,
-        :photos)
+        photos: [])
   end 
 end
