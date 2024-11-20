@@ -1,62 +1,62 @@
 <div id="layoutSidenav">
-    <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-            <div class="sb-sidenav-menu">
-                <div class="nav">
-                    <div class="sb-sidenav-menu-heading"><hr></div>
-                    <a class="nav-link" href="index.html">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-book"></i></div>
-                        Bookings
-                    </a>
-                    <div class="sb-sidenav-menu-heading"><hr></div>
-                    <%= link_to [current_user], data: { bsToggle: "collapse", bsTarget: "#collapseLayouts"}, class: "nav-link collapsed" do %>
-                      <i class="fa-solid fa-hand-holding-dollar sb-nav-link-icon"></i>
-                      <p>Offers</p>
-                    <% end %>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div id="layoutSidenav_content">
-        <main>
-            <div class="container-fluid px-4">
-                <h1 class="mt-4">Dashboard</h1>
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table me-1"></i>
-                    </div>
-                    <div class="card-body">
-                        <table id="datatablesSimple">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                              <% if @offers %>
-                                <% @offers.each do |offer| %>
-                                  <tr class="user-link-parent">
-                                      <td><%= offer.title %></td>
-                                      <td><%= offer.description %></td>
-                                      <td><%= offer.price %></td>
-                                      <td><%= link_to "", offer_path(offer), class: "user-link" %></td>
-                                  </tr>
-                                <% end %>
-                              <% end %>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </main>
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Boardgame Mania 2024</div>
-                </div>
-            </div>
-        </footer>
-    </div>
+  <div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+      <div class="sb-sidenav-menu">
+        <div class="nav">
+          <div class="sb-sidenav-menu-heading"><hr></div>
+          <a class="nav-link" href="index.html">
+            <div class="sb-nav-link-icon"><i class="fa-solid fa-book"></i></div>
+            Bookings
+          </a>
+          <div class="sb-sidenav-menu-heading"><hr></div>
+          <%= link_to [current_user], data: { bsToggle: "collapse", bsTarget: "#collapseLayouts"}, class: "nav-link collapsed" do %>
+            <i class="fa-solid fa-hand-holding-dollar sb-nav-link-icon"></i>
+            <p>Offers</p>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div id="layoutSidenav_content">
+    <main>
+      <div class="container-fluid px-4">
+        <h1 class="mt-4">Dashboard</h1>
+        <div class="card mb-4">
+          <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+          </div>
+          <div class="card-body">
+            <table id="datatablesSimple">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if @offers %>
+                  <% @offers.each do |offer| %>
+                    <tr class="user-link-parent">
+                      <td><%= offer.title %></td>
+                      <td><%= offer.description %></td>
+                      <td><%= offer.price %></td>
+                      <td><%= link_to "", offer_path(offer), class: "user-link" %></td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="py-4 bg-light mt-auto">
+      <div class="container-fluid px-4">
+        <div class="d-flex align-items-center justify-content-between small">
+          <div class="text-muted">Copyright &copy; Boardgame Mania 2024</div>
+        </div>
+      </div>
+    </footer>
+  </div>
 </div>
