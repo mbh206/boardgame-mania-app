@@ -6,6 +6,7 @@
   /*customizable*/
   // height: 250px;
   width: 200px;
+  height: 320px;
   border-radius: 4px;
   background-color: white;
   box-shadow: 0 0px 16px rgba(0, 0, 0, 0.3);
@@ -14,8 +15,9 @@
 .card-pick img {
   /*fixed*/
   width: 100%;
-  min-height: 100px;
+  //min-height: 100px;
   object-fit: cover;
+  height: 150px;
   /*customizable*/
   object-position: 50% 50%;
   border-radius: 4px 4px 0 0;
@@ -66,20 +68,20 @@
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .cards {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
