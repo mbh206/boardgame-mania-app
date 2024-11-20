@@ -23,6 +23,32 @@
         <h1 class="mt-4">Dashboard</h1>
         <div class="card mb-4">
           <div class="card-header">
+            <h4><i class="fas fa-table me-1"></i>Bookings</h4>
+          </div>
+          <div class="card-body">
+            <table id="datatablesSimple">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if @bookings %>
+                  <% @bookings.each do |booking| %>
+                    <tr class="user-link-parent">
+                      <td><%= booking %></td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h4><i class="fas fa-table me-1"></i>Offers</h4>
             <i class="fas fa-table me-1"></i>
           </div>
           <div class="card-body">
