@@ -12,8 +12,10 @@ class BookingsController < ApplicationController
   def create
     @offer = Offer.find(params[:offer_id])
     @booking = Booking.new(bookings_params)
+    @days = @booking.end_date.to_datetime - @booking.start_date.to_datetime
     @booking.user = current_user
     @booking.offer = @offer
+    @booking.total_price = @offer.price * @days
     if @booking.save
       redirect_to user_path(current_user)
     else
