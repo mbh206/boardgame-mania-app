@@ -1,4 +1,5 @@
 class OffersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :show]
   def show
     @booking = Booking.new
     @offer = Offer.find(params[:id])
@@ -6,7 +7,7 @@ class OffersController < ApplicationController
   end
 
   def new
-    @boardgames = Boardgame.all 
+    @boardgames = Boardgame.all
     @offer = Offer.new
   end
   def create
@@ -19,15 +20,14 @@ class OffersController < ApplicationController
     end
   end
 
-  private 
+  private
 
   def offers_params
         params.require(:offer).permit(
-        :boardgame_id, 
-        :user_id, 
-        :price, 
+        :boardgame_id,
+        :user_id,
+        :price,
         :description,
         :title,
-        photos: [])
-  end 
-end
+        :photos)
+
