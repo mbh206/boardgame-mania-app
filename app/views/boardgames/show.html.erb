@@ -21,11 +21,12 @@
       </thead>
       <tbody>
         <%@boardgame.offers.each_with_index do |offer, index|%>
-          <tr>
-            <th scope="row"><%= link_to index + 1, offer_path(offer) %></th>
-            <td><%= link_to offer.title, offer_path(offer) %></td>
-            <td><%= link_to offer.description, offer_path(offer) %></td>
-            <td><%= link_to offer.price, offer_path(offer) %></td>
+          <tr class= "offer-link-parent">
+            <th scope="row"><%= index + 1%></th>
+            <td><%= offer.title%></td>
+            <td><%= offer.description%></td>
+            <td><%= offer.price%></td>
+            <td><%= link_to "", offer_path(offer), class: "offer-link" %></td>
           </tr>
         <%end%>
       </tbody>
