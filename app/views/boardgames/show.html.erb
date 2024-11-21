@@ -13,16 +13,18 @@
     <table class="table w-100 m-0">
       <thead>
         <tr>
-          <th class="px-4" scope="col">#</th>
+          <th class="px-4" scope="col"><i class="fa-solid fa-link"></i></th>
+          <th class="px-4" scope="col">Image</th>
           <th class="px-4" scope="col">Title</th>
           <th class="px-4" scope="col">Description</th>
           <th class="px-4" scope="col">Price</th>
         </tr>
       </thead>
       <tbody>
-        <%@boardgame.offers.each_with_index do |offer, index|%>
-          <tr class= "offer-link-parent">
-            <td class="px-4" scope="row"><%= index + 1%></td>
+        <%@boardgame.offers.each do |offer|%>
+          <tr class= "offer-link-parent align-middle">
+            <td class="px-4"><div class="w btn btn-warning">View Offer</div></td>
+            <td class="px-4"><%= cl_image_tag offer.photos[0].key, height: 70, class: "rounded shadow-md" %></td>
             <td class="px-4"><%= offer.title%></td>
             <td class="px-4"><%= offer.description%></td>
             <td class="px-4">$<%= offer.price%></td>

@@ -1,8 +1,8 @@
 <div class="container ">
-  <h1 class="my-3 text-center"><%= @offer.title %></h1>
+  <h1 class="my-3 text-center"><%= @offer.boardgame.name %></h1>
   <div class="row">
     <div class="col col-8">
-      <div id="carouselExampleControls" class="carousel slide w-100 rounded shadow-lg m-0" data-bs-ride="carousel">
+      <div id="carouselExampleControls" class="carousel slide w-100 rounded shadow-sm m-0" data-bs-ride="carousel">
         <div class="carousel-inner">
           <% @offer.photos.each_with_index do |photo, index| %>
             <div class="carousel-item <%= index == 0 ? "active" : "" %>">
@@ -20,6 +20,9 @@
         </button>
       </div>
       <div class="my-5 text-left">
+        <h3><%= @offer.title %></h3>
+      </div>
+      <div class="my-5 text-left">
         <h4>Description:</h4>
         <p><%= @offer.description %></p>
       </div>
@@ -28,14 +31,14 @@
         <h4>Owner: <%= @offer.user.name %></h4>
       </div>
     </div>
-    <div class="col col-4 py-5 pt-4">
-      <div class="text-center text-light shadow-lg p-3 mb-2 rounded bg-success bg-gradient">
+    <div class="col col-4 mt-0">
+      <div class="booking-box text-center text-light shadow-sm p-3 mb-2 mt-0 rounded bg-gradient">
         <h2>Make a Booking!</h2>
         <%= simple_form_for [@offer, @booking], data: {controller: 'datepicker', class: "d-flex flex-column"} do |f| %>
           <p>Start Date: <%= f.date_field :start_date, class: 'rental-date' %></p>
           <p>End Date: <%= f.date_field :end_date, class: 'rental-date' %></p>
           <p class="fs-3">Price: $<%= @offer.price %></p>
-          <%= f.submit "Book Now", class: "btn btn-light" %>
+          <%= f.submit "Book Now", class: "btn btn-warning bg-gradient" %>
         <% end %>
       </div>
     </div>
