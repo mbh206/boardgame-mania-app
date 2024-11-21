@@ -1,3 +1,13 @@
 #home-btn{
   background-color: #0498C1;
+  &:hover {
+    background-color: $warning;
+  }
+}
+
+#search-btn{
+  background-color: #0498C1;
+  &:hover {
+    background-color: $warning;
+  }
 }

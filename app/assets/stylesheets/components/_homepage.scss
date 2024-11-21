@@ -14,29 +14,10 @@ body:has(.banner) {
   height: 100vh;
 }
 
-h1 {
-  margin: 0;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
-  font-weight: bold;
-}
-
-p {
-  font-size: 20px;
-  color: white;
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-
 .board {
   background-size: cover;
   background-position: center;
   width: 50px;
-}
-
-.active {
-  padding-top: 2px;
 }
 
 .btn-flat {
@@ -47,22 +28,16 @@ p {
   transition: background 0.3s ease;
 }
 
-.carousel {
+.carousel-home {
   height: calc(100vh - 154px);
   width: 100%;
   overflow: hidden;
   // margin-top: 0px;
   // object-fit: cover;
-
 }
 
-.carousel-item.active {
+.carousel-home-item.active {
   // padding-top: 50;
-}
-
-img {
-  width: 100%;
-  object-fit: cover;
 }
 
 .get-started-btn {

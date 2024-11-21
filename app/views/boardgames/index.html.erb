@@ -8,7 +8,7 @@
       placeholder="Search games"
       class="form-control"
       value="<%= params[:query] %>">
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" id="search-btn" class="btn">
       <i class="fas fa-search"></i>
     </button>
     <%= link_to boardgames_path, class: "btn btn-warning d-flex align-items-center gap-1" do %>
@@ -18,11 +18,11 @@
 </form>
   <div class="cards">
     <% @boardgames.each do |boardgame| %>
-      <%= link_to boardgame_path(boardgame), class: 'text-decoration-none' do %>
-        <div class="card-pick mt-3">
+      <%= link_to boardgame_path(boardgame), class: 'text-decoration-none ' do %>
+        <div class="card-pick mt-3 bg-light">
           <%= image_tag boardgame.thumbnail, alt: "default" %>
           <div class="card-pick-info">
-            <h5><%= boardgame.name %></h5>
+            <h5><%= boardgame.name.first(39) %></h5>
             <p><%= boardgame.category %></p>
           </div>
         </div>
