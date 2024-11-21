@@ -64,3 +64,19 @@ img {
   width: 100%;
   object-fit: cover;
 }
+
+.get-started-btn {
+  position: absolute;
+  top: 74%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text-intro {
+  font-size: 37px;
+  position: absolute;
+  top: 49%;
+  left: 63%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
