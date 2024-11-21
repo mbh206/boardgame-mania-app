@@ -21,7 +21,7 @@ User.destroy_all
 
 puts("Creating Boardgames...")
 
-begin 
+begin
   bgg_top_serialized = URI.open("https://boardgamegeek.com/xmlapi2/hot?type=boardgame").read
   bgg_top_xml = Nokogiri::XML(bgg_top_serialized)
 
@@ -32,13 +32,13 @@ begin
     bgg_detail_xml = Nokogiri::XML(bgg_detail_serialized)
     #p bgg_detail_xml
     name = bgg_detail_xml.root.children.xpath("name")[0].attribute_nodes[2].value
-    
+
     unless Boardgame.find_by(name: name)
       puts  "Seeding https://boardgamegeek.com/xmlapi2/thing?id=#{item_value} ..."
 
       #description
       description = bgg_detail_xml.root.children.xpath("description").text
-      #maxplayers 
+      #maxplayers
       maxplayers = bgg_detail_xml.root.children.xpath("maxplayers")[0].attribute_nodes[0].value
       #image
       image = bgg_detail_xml.root.children.xpath("image").text
@@ -46,32 +46,32 @@ begin
       thumbnail = bgg_detail_xml.root.children.xpath("thumbnail").text
       #<link type="boardgamecategory" id="1050" value="Ancient"/>
       category = bgg_detail_xml.root.children.xpath('link[@type="boardgamecategory"]')[0].attribute_nodes[2].value
-      
+
       Boardgame.create!(name: name,
-      description: description, 
-      player_count: maxplayers, 
-      poster: image, 
-      thumbnail: thumbnail, 
+      description: description,
+      player_count: maxplayers,
+      poster: image,
+      thumbnail: thumbnail,
       category: category)
     end
-  end 
+  end
 rescue OpenURI::HTTPError
   puts "BGG API responded with a 'Too many request', #{Boardgame.all.count} seeded ... Continue"
-end 
+end
 
 
 
 puts("Creating users...")
-owner = User.new(name: "Mark Owner", password: "ABC123", email: "mark@boardmail.com");
+owner = User.new(name: "Mark Owner", password: "123123", email: "mark@me.com");
 owner.save!
 
-second_owner = User.new(name: "Christian OwnerTwo", password: "ABC123", email: "christian@boardmail.com");
+second_owner = User.new(name: "Christian OwnerTwo", password: "123123", email: "christian@me.com");
 second_owner.save!
 
-first_user = User.new(name: "Shaf Buyer", password: "ABC123", email: "shaf@boardmail.com");
+first_user = User.new(name: "Shaf Buyer", password: "123123", email: "shaf@me.com");
 first_user.save!
 
-second_user = User.new(name: "Steven BuyerTwo", password: "ABC123", email: "steven@boardmail.com");
+second_user = User.new(name: "Steven BuyerTwo", password: "123123", email: "steven@me.com");
 second_user.save!
 
 # create_table "offers", force: :cascade do |t|
