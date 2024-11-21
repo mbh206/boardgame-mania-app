@@ -31,9 +31,10 @@
       <div data-controller="booking-price" data-booking-price-price-value="<%= @offer.price %>" class="booking-box text-center text-light shadow-sm p-3 mb-2 mt-0 rounded bg-gradient">
         <h2>Make a Booking!</h2>
         <%= simple_form_for [@offer, @booking], data: {controller: 'datepicker', class: "d-flex flex-column"} do |f| %>
-          <p>Start Date: <%= f.input :start_date, html5: true, input_html: { data: { booking_price_target: 'start_date', action: 'change->booking-price#update' }, class: 'rental-date', min: Date.today } %> </p>
-          <p>End Date: <%= f.input :end_date, html5: true, input_html: { data: { booking_price_target: 'end_date', action: 'change->booking-price#update' }, class: 'rental-date', min: Date.today }%> </p>
-          <p  class="fs-3">Price: $<span class='fw-bold' data-booking-price-target='price'></span></p>
+          <p>Start Date: <%= f.input :start_date, html5: true, label: false, input_html: { data: { booking_price_target: 'start_date', action: 'change->booking-price#update' }, class: 'rental-date', min: Date.today } %> </p>
+          <p>End Date: <%= f.input :end_date, html5: true, label: false, input_html: { data: { booking_price_target: 'end_date', action: 'change->booking-price#update' }, class: 'rental-date', min: Date.today }%> </p>
+          <p  class="fs-3">Price: $<%= @offer.price %>/day</p>
+          <p class='fs-3' data-booking-price-target='price'></p>
           <%= f.submit "Book Now", class: "btn btn-warning bg-gradient" %>
         <% end %>
       </div>
