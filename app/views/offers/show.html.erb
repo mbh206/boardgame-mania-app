@@ -2,19 +2,19 @@
   <h1 class="my-3 text-center"><%= @offer.boardgame.name %></h1>
   <div class="row">
     <div class="col col-8">
-      <div id="carouselExampleAutoplaying" class="carousel carousel-offer slide w-100 rounded shadow-sm m-0" data-bs-ride="carousel">
-        <div class="carousel-inner carousel-inner-offer">
+      <div id="carouselExample" class="carousel carousel-offer slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner carousel-inner" style="height: 100%;">
           <% @offer.photos.each_with_index do |photo, index| %>
             <div class="carousel-item  <%= index == 0 ? "active" : "" %>">
               <%= cl_image_tag photo.key, class: "d-block w-100" %>
             </div>
           <% end %>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
