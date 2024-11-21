@@ -7,3 +7,21 @@
   // background-color: $body-bg;
   color: $body-color;
 }
+
+.offer-card {
+  box-shadow: 0 1px 3px #00000060;
+}
+
+.offer-card:hover {
+  box-shadow: 0 2px 5px #00000090;
+}
+
+.offer-game-img {
+  width: 350px;
+  max-height: 350px;
+  object-fit: cover;
+}
+
+.card-icon  {
+  color: $success;
+}
