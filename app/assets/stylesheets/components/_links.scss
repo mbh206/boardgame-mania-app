@@ -9,12 +9,14 @@
   top: 0;
   left: 0;
   color:black;
+  margin: 15px;
 }
 
-.offer-link-parent:nth-child(odd){
-  color:black;
-  background-color: #f2f2f2;
-}
+// .offer-link-parent:nth-child(odd){
+//   color:black;
+//   background-color: #fafcf0;
+//   z-index: -1;
+// }
 
 .booking-box {
   background-color: $primary;

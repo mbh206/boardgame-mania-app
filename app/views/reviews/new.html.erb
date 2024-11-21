@@ -1,0 +1,8 @@
+<div class="container">
+  <h1 class="mt-2">Create a new review</h1>
+  <%= simple_form_for [@offer, @review] do |f|%>
+    <%= f.input :rating %>
+    <%= f.input :description %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>
