@@ -41,6 +41,17 @@
           <%= f.submit "Book Now", class: "btn btn-warning bg-gradient" %>
         <% end %>
       </div>
+      <div class="m-3">
+        <h1>Reviews</h1>
+        <% @reviews.each do |review| %>
+          <p>
+            <%= review.description%> -
+            <% review.rating.times do %>
+              <i class="fa-solid fa-star"></i>
+            <% end %>
+          </p>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
