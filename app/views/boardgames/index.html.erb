@@ -1,8 +1,6 @@
 <div class="container">
-  <h1>All Games</h1>
-
   <!-- Search Form  Steve's add-->
- <form method="get" action="<%= boardgames_path %>" class="mb-4">
+ <form method="get" action="<%= boardgames_path %>" class="my-4">
   <div class="d-flex align-items-center gap-2">
     <input
       type="text"
@@ -18,20 +16,13 @@
     <% end %>
   </div>
 </form>
-
-
-
-
-
-
-
   <div class="cards">
     <% @boardgames.each do |boardgame| %>
       <%= link_to boardgame_path(boardgame), class: 'text-decoration-none' do %>
         <div class="card-pick mt-3">
           <%= image_tag boardgame.thumbnail, alt: "default" %>
           <div class="card-pick-info">
-            <h3><%= boardgame.name %></h3>
+            <h5><%= boardgame.name %></h5>
             <p><%= boardgame.category %></p>
           </div>
         </div>
