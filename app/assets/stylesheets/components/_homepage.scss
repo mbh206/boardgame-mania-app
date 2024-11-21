@@ -39,3 +39,19 @@ body:has(.banner) {
 .carousel-home-item.active {
   // padding-top: 50;
 }
+
+.get-started-btn {
+  position: absolute;
+  top: 74%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text-intro {
+  font-size: 37px;
+  position: absolute;
+  top: 49%;
+  left: 63%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
