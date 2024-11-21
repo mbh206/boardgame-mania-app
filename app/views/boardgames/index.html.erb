@@ -1,12 +1,37 @@
 <div class="container">
-  <h1>All games</h1>
+  <h1>All Games</h1>
+
+  <!-- Search Form  Steve's add-->
+ <form method="get" action="<%= boardgames_path %>" class="mb-4">
+  <div class="d-flex align-items-center gap-2">
+    <input
+      type="text"
+      name="query"
+      placeholder="Search games"
+      class="form-control"
+      value="<%= params[:query] %>">
+    <button type="submit" class="btn btn-primary">
+      <i class="fas fa-search"></i>
+    </button>
+    <%= link_to boardgames_path, class: "btn btn-warning d-flex align-items-center gap-1" do %>
+      <i class="fas fa-times"></i> Clear
+    <% end %>
+  </div>
+</form>
+
+
+
+
+
+
+
   <div class="cards">
-    <%@boardgames.each do |boardgame| %>
+    <% @boardgames.each do |boardgame| %>
       <%= link_to boardgame_path(boardgame), class: 'text-decoration-none' do %>
         <div class="card-pick mt-3">
-          <%= image_tag boardgame.thumbnail, alt: "default"%>
+          <%= image_tag boardgame.thumbnail, alt: "default" %>
           <div class="card-pick-info">
-            <h3><%=boardgame.name %></h3>
+            <h3><%= boardgame.name %></h3>
             <p><%= boardgame.category %></p>
           </div>
         </div>
