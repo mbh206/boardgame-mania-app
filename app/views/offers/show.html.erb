@@ -30,6 +30,30 @@
       <div class="py-5">
         <h4>Owner: <%= @offer.user.name %></h4>
       </div>
+      <div class="py-5">
+        <h4>Bookings</h4>
+        <% @offer.bookings.all.each do |booking| %>
+          <ul>
+            <li>start_date: <%= booking.start_date%></li>
+            <li><%= booking.end_date%></li>
+            <li><%= booking.total_price%></li>
+            <li><%= booking.status%></li>
+            <li><%= booking.user.name%></li>
+          </ul>
+          <% if booking.pending? && booking.offer.user == current_user %>
+            <div class="d-flex">
+              <%= simple_form_for booking do |f| %>
+                <%= f.input :status, as: :hidden, input_html: { value: 1} %>
+                <%= f.submit 'Accept', class: 'btn btn-info' %>
+              <% end %>
+              <%= simple_form_for booking do |f| %>
+                <%= f.input :status, as: :hidden, input_html: { value: 2} %>
+                <%= f.submit 'Reject', class: 'btn btn-light' %>
+              <% end %>
+            </div>
+          <% end%>
+        <% end %>
+      </div>
     </div>
     <div class="col col-4 mt-0">
       <div class="booking-box text-center text-light shadow-sm p-3 mb-2 mt-0 rounded bg-gradient">

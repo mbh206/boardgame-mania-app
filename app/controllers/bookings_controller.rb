@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
   def new
     @boardgames = Boardgame.all
     @booking = Booking.new
-    end
+  end
 
   def create
     @offer = Offer.find(params[:offer_id])
@@ -16,6 +16,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.offer = @offer
     @booking.total_price = @offer.price * @days
+    @booking.status = 0 #pending status
     if @booking.save
       redirect_to user_path(current_user)
     else
@@ -24,12 +25,22 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    @booking = Booking.find(params[:id])
+    if @booking.update(bookings_params)
+      redirect_to user_path(current_user)
+    else
+      redirect_to offer_path(@booking.offer) 
+    end
+  end
+
   private
 
   def bookings_params
       params.require(:booking).permit(
         :start_date,
-        :end_date
+        :end_date,
+        :status
       )
   end
 end
