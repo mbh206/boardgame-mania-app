@@ -62,16 +62,16 @@ end
 
 
 puts("Creating users...")
-owner = User.new(name: "Mark Owner", password: "123123", email: "mark@me.com");
+owner = User.new(name: "Mark", password: "123123", email: "mark@me.com");
 owner.save!
 
-second_owner = User.new(name: "Christian OwnerTwo", password: "123123", email: "christian@me.com");
+second_owner = User.new(name: "Christian", password: "123123", email: "christian@me.com");
 second_owner.save!
 
-first_user = User.new(name: "Shaf Buyer", password: "123123", email: "shaf@me.com");
+first_user = User.new(name: "Shaf", password: "123123", email: "shaf@me.com");
 first_user.save!
 
-second_user = User.new(name: "Steven BuyerTwo", password: "123123", email: "steven@me.com");
+second_user = User.new(name: "Steven", password: "123123", email: "steven@me.com");
 second_user.save!
 
 # create_table "offers", force: :cascade do |t|

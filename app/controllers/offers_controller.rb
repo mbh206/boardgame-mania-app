@@ -3,6 +3,7 @@ class OffersController < ApplicationController
   def show
     @booking = Booking.new
     @offer = Offer.find(params[:id])
+    @reviews = Review.where(offer_id: params[:id])
   end
 
   def new
