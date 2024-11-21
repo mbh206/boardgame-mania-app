@@ -67,42 +67,15 @@
             </h4>
             <%= link_to "Create Offer", new_offer_path, class: "btn btn-secondary" %>
           </div>
-          <div class="card-body">
-            <table id="datatablesSimple">
-              <thead>
-                <tr>
-                  <th class="px-3">Pending Offers</th>
-                  <th class="px-3">Game</th>
-                  <th class="px-3">Condition</th>
-                  <th class="px-3">Description</th>
-                  <th class="px-3">Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% if @offers %>
-                  <% @offers.each do |offer| %>
-                    <tr class="user-link-parent">
-                      <td class="px-3"><%= offer.bookings.where("status=0").empty? ? "" : offer.bookings.where("status=0").count %></td>
-                      <td class="px-3"><%= offer.boardgame.name %></td>
-                      <td class="px-3"><%= offer.title %></td>
-                      <td class="px-3"><%= offer.description %></td>
-                      <td class="px-3">$<%= offer.price %></td>
-                      <td class="px-3"><%= link_to "", offer_path(offer), class: "user-link" %></td>
-                    </tr>
-                  <% end %>
-                <% end %>
-              </tbody>
-            </table>
+        </div>
+        <%= render 'table', offers: @offers%>%
+      </main>
+      <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+          <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Boardgame Mania 2024</div>
           </div>
         </div>
-      </div>
-    </main>
-    <footer class="py-4 bg-light mt-auto">
-      <div class="container-fluid px-4">
-        <div class="d-flex align-items-center justify-content-between small">
-          <div class="text-muted">Copyright &copy; Boardgame Mania 2024</div>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </div>
-</div>
