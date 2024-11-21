@@ -1,16 +1,35 @@
   <h1 class="text-center fw-light py-2"><%=@boardgame.name%></h1>
 <div class="d-flex p-0 m-0 w-100">
-  <div class="game-side col-6 bg-gradient p-3 m-0 overflow-auto vh-100 m-0">
-    <h2 class="text-center fw-light">Game Details</h2>
-    <ul class="list-unstyled">
-      <li><%= image_tag @boardgame.poster, alt: "Poster", width: "100%", class: "rounded shadow-sm mb-2" %></li>
-      <li class="d-flex gap-2"><i class="fa-solid fa-people-group align-middle"></i><span class="align-middle"><%=@boardgame.player_count%></span></li>
-      <li class="d-flex gap-2"><i class="fa-solid fa-list align-middle"></i><span class="align-middle"><%=@boardgame.category%></span></li>
-      <li class="d-flex gap-2"><i class="fa-solid fa-circle-info align-middle"></i><span class="align-middle"><%=@boardgame.description.gsub("&#10;&#10;", "<br/><br/>").gsub("&mdash;", "<br/>\n–").html_safe%></span></li>
-    </ul>
+  <div class="game-side col-7 bg-gradient p-3 m-0 m-0">
+    <h3 class="text-center fw-light">Game Details</h3>
+    <div class="list-unstyled d-flex gap-4">
+      <%= image_tag @boardgame.poster, alt: "Poster", class: "offer-game-img rounded shadow-sm mb-2" %>
+      <div>
+        <div class="d-flex  gap-4 align-middle mb-4">
+          <div>
+            <i class="fa-solid fa-people-group align-middle"></i>
+            <span>
+              <%=@boardgame.player_count%>
+            </span>
+          </div>
+          <div>
+            <i class="fa-solid fa-list align-middle"></i>
+            <span>
+              <%=@boardgame.category%>
+            </span>
+          </div>
+        </div>
+        <div class="d-flex gap-2 align-middle">
+          <i class="fa-solid fa-circle-info align-middle"></i>
+          <span>
+            <%=@boardgame.description.gsub("&#10;&#10;", "<br/><br/>").gsub("&mdash;", "<br/>\n–").html_safe%>
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="py-4 col-6 overflow-auto vh-100">
-    <h2 class="text-center">Available Offers for <%=@boardgame.name%></h2>
+  <div class="py-3 col-5">
+    <h3 class="text-center">Available Offers for <%=@boardgame.name%></h3>
     <div class="d-flex justify-content-center">
       <%
 =begin%>
@@ -27,16 +46,23 @@
 =end%>
       <div class="d-flex flex-column">
         <%@boardgame.offers.each do |offer|%>
-          <div class= "d-flex offer-link-parent border rounded mb-4 px-2 w-100">
-            <div>
-              <div class="p-1 mx-auto align-content-center">
-                <%= offer.user.name%>
-                <%= offer.title%>
-                $<%= offer.price.round%></div>
+          <div class= "offer-card d-flex justify-between offer-link-parent rounded mb-4 px-2 w-100 bg-light">
+            <div class="mx-2 w-100">
+              <div class="p-1 align-content-center">
+                <h6 class="p-1"><i class="p-2 card-icon fa-solid fa-user"></i><%= offer.user.name%></h6>
+                <h6 class="p-1"><i class="p-1 card-icon fa-solid fa-house-chimney-crack"></i><%= offer.title%> condition</h6>
+                <h6 class="p-1"><i class="p-2 card-icon fa-solid fa-tag"></i>$<%= offer.price.round%></h6>
+              </div>
+              <div class="p-1">
+                <div class="btn-md btn btn-warning mx-auto w-100">See Description</div>
+              </div>
             </div>
-            <div class="p-1 mx-auto align-content-center"><div class="btn-md btn btn-warning">See Description</div></div>
-            <div class="p-1 mx-1 align-content-center"><%= cl_image_tag offer.photos[0].key, height: 120, class: "rounded border" %></div>
-            <div class="px-2"><%= link_to "", offer_path(offer), class: "offer-link" %></div>
+            <div class="p-1">
+              <%= cl_image_tag offer.photos[0].key, height: 190, width: 250, class: "rounded border" %>
+            </div>
+            <div class="px-2">
+              <%= link_to "", offer_path(offer), class: "offer-link" %>
+            </div>
           </div>
         <%end%>
       </div>
