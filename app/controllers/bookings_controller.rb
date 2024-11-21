@@ -16,7 +16,6 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.offer = @offer
     @booking.total_price = @offer.price * @days
-    @booking.status = 0 #pending status
     if @booking.save
       redirect_to user_path(current_user)
     else
@@ -27,11 +26,9 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    if @booking.update(bookings_params)
-      redirect_to user_path(current_user)
-    else
-      redirect_to offer_path(@booking.offer) 
-    end
+    @booking.update(bookings_params)
+    redirect_to user_path(current_user)
+    
   end
 
   private

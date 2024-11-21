@@ -1,0 +1,17 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="alloffers-tab" data-bs-toggle="tab" data-bs-target="#alloffers" type="button" role="tab" aria-controls="alloffers" aria-selected="true">All Offers</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pendingoffers-tab" data-bs-toggle="tab" data-bs-target="#pendingoffers" type="button" role="tab" aria-controls="pendingoffers" aria-selected="false">Pending Offers</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="alloffers" role="tabpanel" aria-labelledby="alloffers-tab">
+    <%= render 'offers_pane', offers: @offers, var: nil %>
+  </div>
+  <div class="tab-pane fade" id="pendingoffers" role="tabpanel" aria-labelledby="pendingoffers-tab">
+    <%= render 'offers_pane', offers: @offers.joins(:bookings).where("bookings.status=?",0), var: nil %>
+  </div>
+</div>
+</div>
