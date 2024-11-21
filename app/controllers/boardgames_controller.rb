@@ -13,6 +13,11 @@ class BoardgamesController < ApplicationController
      else
        @boardgames
      end
+
+     respond_to do |format|
+        format.html # Follow regular flow of Rails
+        format.text { render partial: 'components/list.html', locals: { boardgames: @boardgames } }
+     end
   end
 
   #before action: Boardgame.find(params[:id])
