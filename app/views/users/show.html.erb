@@ -29,7 +29,10 @@
             <table id="datatablesSimple">
               <thead>
                 <tr>
-                  <th class="px-3">Title</th>
+                  <th class="px-3">User</th>
+                  <th class="px-3">Game</th>
+                  <th class="px-3">Status</th>
+                  <th class="px-3">Condition</th>
                   <th class="px-3">Description</th>
                   <th class="px-3">Price</th>
                   <th class="px-3">Start Date</th>
@@ -40,11 +43,14 @@
                 <% if @bookings %>
                   <% @bookings.each do |booking| %>
                     <tr class="user-link-parent">
+                      <td class="px-3"><%= booking.offer.user.name %></td>
+                      <td class="px-3"><%= booking.offer.boardgame.name %></td>
+                      <td class="px-3"><%= booking.status %></td>
                       <td class="px-3"><%= Offer.find(booking.offer_id).title %></td>
                       <td class="px-3"><%= Offer.find(booking.offer_id).description%></td>
                       <td class="px-3">$<%= booking.total_price %></td>
-                      <td class="px-3"><%= booking.start_date %></td>
-                      <td class="px-3"><%= booking.end_date %></td>
+                      <td class="px-3"><%= booking.start_date.strftime("%d/%m/%Y")%></td>
+                      <td class="px-3"><%= booking.end_date.strftime("%d/%m/%Y")%></td>
                       <td><%= link_to "", offer_path(booking.offer_id), class: "user-link" %></td>
                     </tr>
                   <% end %>
@@ -65,7 +71,9 @@
             <table id="datatablesSimple">
               <thead>
                 <tr>
-                  <th class="px-3">Title</th>
+                  <th class="px-3">Pending Offers</th>
+                  <th class="px-3">Game</th>
+                  <th class="px-3">Condition</th>
                   <th class="px-3">Description</th>
                   <th class="px-3">Price</th>
                 </tr>
@@ -74,6 +82,8 @@
                 <% if @offers %>
                   <% @offers.each do |offer| %>
                     <tr class="user-link-parent">
+                      <td class="px-3"><%= offer.bookings.where("status=0").empty? ? "" : offer.bookings.where("status=0").count %></td>
+                      <td class="px-3"><%= offer.boardgame.name %></td>
                       <td class="px-3"><%= offer.title %></td>
                       <td class="px-3"><%= offer.description %></td>
                       <td class="px-3">$<%= offer.price %></td>
@@ -96,4 +106,3 @@
     </footer>
   </div>
 </div>
-class="px-3"

@@ -1,7 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to "/", class: "navbar-brand gap-2 d-flex" do %>
-      <%= image_tag "dice.ico" %><h2 class="pt-1">Boardgame Mania</h2>
+      <%= image_tag "dice.ico" %>
+      <h2 class="pt-1">Boardgame Mania</h2>
     <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,6 +12,9 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to "Boardgames", "/boardgames", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= current_user.email%>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
