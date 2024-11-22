@@ -20,11 +20,14 @@
         </button>
       </div>
       <div class="my-5 text-left">
-        <h3><%= @offer.user.name %>'s boardgame!</h3>
+        <h3>
+          <%= image_tag "#{rand(1..5)}.png", class: "review-avatar dropdown-toggle p-1", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= @offer.user.name %>
+          's boardgame!
+        </h3>
       </div>
       <div class="my-5 text-left">
-        <h4>Condition:</h4>
-        <p><%= @offer.title %></p>
+        <h4>Condition: <%= @offer.title %></h4>
       </div>
     </div>
     <div class="col col-4 mt-0">
@@ -43,11 +46,22 @@
         <% @reviews.each do |review| %>
           <p>
             <%= image_tag "#{rand(1..5)}.png", class: "review-avatar dropdown-toggle p-1", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <%= review.description%> -
-            <% review.rating.times do %>
-              <i id="star" class="fa-solid fa-star"></i>
-            <% end %>
+            <%=  review.user.name%>
           </p>
+          <div>
+            <div>
+              <% review.rating.times do %>
+                <i id="star" class="fa-solid fa-star"></i>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <i class="fa-solid fa-star"></i>
+              <% end %>
+            </div>
+            <div>
+              <%= review.description%>
+            </div>
+          </div>
+          <hr>
         <% end %>
       </div>
     </div>
