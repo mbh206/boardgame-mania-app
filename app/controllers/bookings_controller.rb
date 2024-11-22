@@ -19,7 +19,6 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to user_path(current_user)
     else
-      raise
       render 'new', status: :unprocessable_entity
     end
   end
@@ -28,7 +27,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.update(bookings_params)
     redirect_to user_path(current_user)
-    
+
   end
 
   private

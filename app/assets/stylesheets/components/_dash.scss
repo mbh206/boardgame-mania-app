@@ -10831,6 +10831,7 @@ body {
 
 .user-link-parent {
   position: relative;
+  border-bottom: 1px solid #d1d1d1;
 }
 
 .user-link {
@@ -10839,6 +10840,7 @@ body {
  height: 100%;
  top:0;
  left:0;
+ padding: 1rem 0;
 }
 
 .nav .nav-link .sb-nav-link-icon,
