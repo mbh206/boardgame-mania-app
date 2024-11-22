@@ -10,13 +10,13 @@ class BoardgamesController < ApplicationController
      # If there's a query, filter by both name and category
      if @query.present?
        @boardgames = Boardgame.where("name ILIKE ? OR category ILIKE ?", "%#{@query}%", "%#{@query}%")
-     else
-       @boardgames
-     end
+      else
+        @boardgames
+      end
 
-     respond_to do |format|
+      respond_to do |format|
         format.html # Follow regular flow of Rails
-        format.text { render partial: 'components/list.html', locals: { boardgames: @boardgames } }
+        format.text { render partial: 'boardgames/list', locals: { boardgames: @boardgames }, formats: [:html] }
      end
   end
 
