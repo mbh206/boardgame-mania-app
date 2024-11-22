@@ -5,19 +5,19 @@
         <h1 class="mt-4"><%= current_user.name %>'s Dashboard</h1>
         <div class="card mb-4">
           <div class="card-header">
-            <h4><i class="fas fa-table me-1"></i>My Reservations</h4>
+            <h4><i class="fas fa-table me-1"></i>Games I'm Renting</h4>
           </div>
           <%= render 'reservation_table', offer: @offers%>
         </div>
         <div class="card mb-4">
           <div class="card-header">
-            <h4><i class="fas fa-table me-1"></i>My Game Rentals</h4>
+            <h4><i class="fas fa-table me-1"></i>Games Others Have Rented from Me</h4>
           </div>
           <%= render 'bookings_table', offers: @offers%>
         </div>
         <div class="card mb-4">
           <div class="card-header d-flex justify-content-between">
-            <h4><i class="fas fa-table me-1"></i>My Game Offers</h4>
+            <h4><i class="fas fa-table me-1"></i>Games I'm Offering for Rent </h4>
             <%= link_to "Create Offer", new_offer_path, class: "btn btn-warning" %>
           </div>
           <%= render 'offers_table', offers: @offers%>
