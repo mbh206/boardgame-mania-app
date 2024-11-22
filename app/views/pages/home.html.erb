@@ -34,7 +34,7 @@
       </div>
 
       <p class="text-intro"><strong>Boardgame Mania brings the creative players together</strong>!</p>
-      <%= link_to 'Get Started!', boardgames_path, class:"btn btn-primary get-started-btn" %>
+      <%= link_to 'Get Started!', boardgames_path, class:"btn btn-lg btn-info get-started-btn" %>
     </div>
   </div>
 
@@ -44,7 +44,35 @@
     </div>
   <!-- Section for images at the bottom -->
 <div class="image-gallery">
-  <img src="https://cf.geekdo-images.com/W3Bsga_uLP9kO91gZ7H8yw__imagepage/img/M_3Vg1j2HlNgkv7PL2xl2BJE2bw=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2419375.jpg"
+<% @boardgames.limit(6).each do |boardgame| %>
+  <%= link_to boardgame_path(boardgame), class: 'text-decoration-none ' do %>
+    <div class="card-pick mt-3 bg-light">
+      <div>
+        <%= image_tag boardgame.thumbnail, alt: "default" %>
+      </div>
+      <div class="card-pick-info">
+          <h5><%= boardgame.name.first(29) %></h5>
+        <div class="d-flex card-icons gap-4 align-bottom">
+          <div>
+            <i class="fa-solid fa-people-group align-middle"></i>
+            <span>
+              <%=boardgame.player_count%>
+            </span>
+          </div>
+          <div class="mx-auto">
+            <i class="fa-solid fa-list align-middle"></i>
+            <span>
+              <%=boardgame.category%>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+  <%
+=begin%>
+ <img src="https://cf.geekdo-images.com/W3Bsga_uLP9kO91gZ7H8yw__imagepage/img/M_3Vg1j2HlNgkv7PL2xl2BJE2bw=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2419375.jpg"
        alt="Image 1" class="img-thumbnail-home">
   <img src="https://cf.geekdo-images.com/wg9oOLcsKvDesSUdZQ4rxw__imagepage/img/FS1RE8Ue6nk1pNbPI3l-OSapQGc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3536616.jpg"
        alt="Image 2" class="img-thumbnail-home">
@@ -60,6 +88,8 @@
        alt="Image 7" class="img-thumbnail-home">
   <%# <img src="https://cf.geekdo-images.com/EybxJlUc9rz7F7HVFLqsdw__imagepage/img/MwWN78LRcNAmP9wFrEsbuufPrRE=/fit-in/900x600/filters:no_upscale():strip_icc()/pic8378939.jpg"
        alt="Image 8" class="img-thumbnail-home"> %>
+<%
+=end%>
 
 </div>
 

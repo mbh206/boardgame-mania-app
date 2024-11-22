@@ -46,6 +46,8 @@ body:has(.banner) {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  border:none !important;
+  background-color: $yellow !important;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-weight: bold;
 }
@@ -59,7 +61,7 @@ body:has(.banner) {
   transform: translate(-50%, -50%);
   margin: 0;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
   font-weight: bold;
 }
 .image-gallery {
