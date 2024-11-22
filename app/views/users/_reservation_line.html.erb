@@ -2,7 +2,7 @@
   <table id="datatablesSimple">
     <thead>
       <tr>
-        <th class="px-3">renter</th>
+        <th class="px-3">Game Owner</th>
         <th class="px-3">Game</th>
         <th class="px-3">Status</th>
         <th class="px-3">Condition</th>
@@ -17,7 +17,7 @@
         <% var==nil ? cond="" : cond="status=?"%>
         <% bookings.where(cond, var).each do |booking| %>
           <tr class="user-link-parent align-middle">
-            <td class="px-3"><%= booking.user.name %></td>
+            <td class="px-3"><%= booking.offer.user.name %></td>
             <td class="px-3"><%= booking.offer.boardgame.name %></td>
             <td class="px-3">
               <% if booking.pending? %>
