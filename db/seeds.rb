@@ -208,27 +208,12 @@ nb.times.each do |i|
   offer.boardgame = Boardgame.all.sample
   offer.user = User.all.sample
   rand(10).times do 
-    offer.reviews.push(Review.new(boardgame_reviews.sample))
+    review = Review.new(boardgame_reviews.sample)
+    review.user = User.all.sample
+    review.save
+    offer.reviews.push(review)
   end
   offer.save
   print("\r")
-end
-
-puts("Creating reviews...")
-
-rb = Offer.count
-r1 = Review.new(rating: 5, description: "Looked brand new!")
-r2 = Review.new(rating: 3, description: "The game is in good condition, just a few scratches on the box.")
-r3 = Review.new(rating: 4, description: "Everything included and perfectly preserved.")
-
-offers = Offer.all
-offers.each_with_index do |offer, index|
-  print("Review creation progress #{index + 1}/#{rb}...")
-  r1.offer_id = offer.id
-  r2.offer_id = offer.id
-  r3.offer_id = offer.id
-  r1.save!
-  r2.save!
-  r3.save!
 end
 print("Seeding process finished!")
