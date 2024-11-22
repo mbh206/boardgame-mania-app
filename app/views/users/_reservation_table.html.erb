@@ -1,0 +1,28 @@
+<ul class="nav nav-tabs" id="reservationTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="reservation-all-tab" data-bs-toggle="tab" data-bs-target="#reservation-all" type="button" role="tab" aria-controls="all" aria-selected="true">all</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="reservation-pending-tab" data-bs-toggle="tab" data-bs-target="#reservation-pending" type="button" role="tab" aria-controls="reservation-pending" aria-selected="false">pending</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="reservation-accepted-tab" data-bs-toggle="tab" data-bs-target="#reservation-accepted" type="button" role="tab" aria-controls="reservation-accepted" aria-selected="false">accepted</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="reservation-rejected-tab" data-bs-toggle="tab" data-bs-target="#reservation-rejected" type="button" role="tab" aria-controls="reservation-rejected" aria-selected="false">rejected</button>
+  </li>
+</ul>
+<div class="tab-content" id="reservationTabContent">
+  <div class="tab-pane fade show active" id="reservation-all" role="tabpanel" aria-labelledby="reservation-all-tab">
+    <%=render 'reservation_line', bookings: @bookings, var: nil%>
+  </div>
+  <div class="tab-pane fade" id="reservation-pending" role="tabpanel" aria-labelledby="reservation-pending-tab">
+    <%= render 'reservation_line', bookings: @bookings.where(status: "pending"), var: 0 %>
+  </div>
+  <div class="tab-pane fade" id="reservation-accepted" role="tabpanel" aria-labelledby="reservation-accepted-tab">
+    <%=render 'reservation_line', bookings: @bookings.where(status: "accepted"), var: 1%>
+  </div>
+  <div class="tab-pane fade" id="reservation-rejected" role="tabpanel" aria-labelledby="reservation-rejected-tab">
+    <%=render 'reservation_line', bookings: @bookings.where(status: "rejected"), var: 2%>
+  </div>
+</div>
