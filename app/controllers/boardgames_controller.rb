@@ -19,8 +19,6 @@ class BoardgamesController < ApplicationController
         format.text { render partial: 'boardgames/list', locals: { boardgames: @boardgames }, formats: [:html] }
      end
   end
-
-  #before action: Boardgame.find(params[:id])
   def show
 
   end

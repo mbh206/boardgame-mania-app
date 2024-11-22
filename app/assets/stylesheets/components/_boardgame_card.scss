@@ -29,7 +29,10 @@
   padding: 1rem 0rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   height: 100%;
+  padding:0;
+  margin:0;
 }
 .card-pick-info h5 {
   /*customizable*/
