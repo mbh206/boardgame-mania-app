@@ -19,15 +19,24 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      <div class="my-5 text-left">
-        <h3>
-          <%= image_tag "#{rand(1..5)}.png", class: "review-avatar dropdown-toggle p-1", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <%= @offer.user.name %>
-          's boardgame!
-        </h3>
-      </div>
-      <div class="my-5 text-left">
-        <h4>Condition: <%= @offer.title %></h4>
+      <div class="d-flex">
+        <div>
+          <div class="my-3 text-left">
+            <h3>
+              <%= image_tag "#{rand(1..5)}.png", class: "review-avatar dropdown-toggle p-1", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= @offer.user.name %>
+              's boardgame!
+            </h3>
+          </div>
+          <div class="my-3 text-left">
+            <h4>Description: <%= @offer.description %></h4>
+          </div>
+        </div>
+        <div class="mx-auto">
+          <div class="m-3 text-right">
+            <h4>Condition: <%= @offer.title %></h4>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col col-4 mt-0">
