@@ -37,7 +37,7 @@ export default class extends Controller {
       if (diffInDays > 0) {
         // displays the total price per nigh
         // this.infoTarget.innerText = `¥${pricePerDay} x ${diffInDays} nights`;
-        this.priceTarget.innerHTML = `<span>${(
+        this.priceTarget.innerHTML = `<span>$${(
           diffInDays * pricePerDay
         ).toLocaleString()}</span> <small class='fw-light'>total</small> `;
       } else if (diffInDays === 0) {

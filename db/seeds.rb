@@ -19,6 +19,10 @@ Offer.destroy_all
 puts("Deleting all users...")
 User.destroy_all
 
+
+puts("Deleting all users...")
+Boardgame.destroy_all
+
 puts("Creating Boardgames...")
 
 begin
@@ -54,12 +58,11 @@ begin
       thumbnail: thumbnail,
       category: category)
     end
+    sleep 1
   end
 rescue OpenURI::HTTPError
   puts "BGG API responded with a 'Too many request', #{Boardgame.all.count} seeded ... Continue"
 end
-
-
 
 puts("Creating users...")
 owner = User.new(name: "Mark", password: "123123", email: "mark@me.com");
@@ -167,10 +170,33 @@ rental_offers = [
   ]
 ]
 
+boardgame_reviews = [
+  { rating: 5, description: "A fantastic game that's perfect for family and friends." },
+  { rating: 4, description: "Great mechanics and fun gameplay, but a bit complex for beginners." },
+  { rating: 3, description: "Decent game, but can feel repetitive after a few sessions." },
+  { rating: 5, description: "An absolute classic! Easy to learn and endlessly replayable." },
+  { rating: 2, description: "The components are nice, but the gameplay feels unbalanced." },
+  { rating: 4, description: "Engaging and strategic, with just the right amount of challenge." },
+  { rating: 1, description: "Not enjoyable—overly complicated and too long." },
+  { rating: 5, description: "An immersive experience with beautiful artwork and deep strategy." },
+  { rating: 3, description: "It’s okay, but there are better options in the same genre." },
+  { rating: 4, description: "Fun for casual players and seasoned gamers alike." },
+  { rating: 5, description: "A must-have for any board game enthusiast." },
+  { rating: 2, description: "The rules are confusing, and the gameplay is slow." },
+  { rating: 4, description: "Great for parties! Simple to play and very entertaining." },
+  { rating: 5, description: "A game with a perfect blend of strategy and luck." },
+  { rating: 3, description: "It’s fun but lacks variety in the long run." },
+  { rating: 1, description: "The theme is interesting, but the game design is poor." },
+  { rating: 5, description: "Incredible! Every playthrough feels fresh and exciting." },
+  { rating: 4, description: "A solid choice for game night, especially for strategy lovers." },
+  { rating: 2, description: "Looks great, but it’s not as engaging as I hoped." },
+  { rating: 3, description: "Average game—neither great nor terrible." }
+]
 
-puts("Creating offers...")
+
+puts("Generating offers...")
 file = URI.parse("https://cf.geekdo-images.com/JpP6IyLwAnvCZX8kuiGPEg__imagepage/img/dITvv1dckVXuWiz-hWY-If-y2dU=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3771122.jpg").open
-nb = 250
+nb = 100
 nb.times.each do |i|
 
   print("Offer creation progress #{i}/#{nb}...")
@@ -181,8 +207,28 @@ nb.times.each do |i|
   offer.photos.attach(io: file, filename: "photosample", content_type: "image/png" )
   offer.boardgame = Boardgame.all.sample
   offer.user = User.all.sample
+  rand(10).times do 
+    offer.reviews.push(Review.new(boardgame_reviews.sample))
+  end
   offer.save
   print("\r")
 end
 
+puts("Creating reviews...")
+
+rb = Offer.count
+r1 = Review.new(rating: 5, description: "Looked brand new!")
+r2 = Review.new(rating: 3, description: "The game is in good condition, just a few scratches on the box.")
+r3 = Review.new(rating: 4, description: "Everything included and perfectly preserved.")
+
+offers = Offer.all
+offers.each_with_index do |offer, index|
+  print("Review creation progress #{index + 1}/#{rb}...")
+  r1.offer_id = offer.id
+  r2.offer_id = offer.id
+  r3.offer_id = offer.id
+  r1.save!
+  r2.save!
+  r3.save!
+end
 print("Seeding process finished!")
