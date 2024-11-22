@@ -8,7 +8,6 @@
         <div class="carousel-caption d-none d-md-block">
         </div>
       </div>
-
       <!-- Second carousel item -->
       <div class="carousel-home-item carousel-item">
         <img src="https://media.istockphoto.com/id/503277834/photo/business-people-playing-a-board-game.jpg?s=1024x1024&w=is&k=20&c=yn_IKPA9e2gz8JcTYFZ2vCIR8ECDd9wBSynKRc1T-2w="
@@ -16,7 +15,6 @@
         <div class="carousel-caption d-none d-md-block">
         </div>
       </div>
-
       <!-- Third carousel item -->
       <div class="carousel-home-item carousel-item">
         <img src="https://images.pexels.com/photos/4691555/pexels-photo-4691555.jpeg"
@@ -24,7 +22,6 @@
         <div class="carousel-caption d-none d-md-block">
         </div>
       </div>
-
       <!-- Fourth carousel item -->
       <div class="carousel-home-item carousel-item">
         <img src="https://images.unsplash.com/photo-1676651471150-0e3a5f8de05e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGJvYXJkJTIwZ2FtZXN8ZW58MHwwfDB8fHwy"
@@ -32,47 +29,46 @@
         <div class="carousel-caption d-none d-md-block">
         </div>
       </div>
-
       <p class="text-intro"><strong>Boardgame Mania brings the creative players together</strong>!</p>
       <%= link_to 'Get Started!', boardgames_path, class:"btn btn-lg btn-info get-started-btn" %>
     </div>
   </div>
-
-     <div class="image-gallery">
-        <h2>Featured Boardgames</h2>
-        <%# <p>Explore some amazing boardgames below!</p> %>
-    </div>
+  <div class="image-gallery">
+    <h2>Featured Boardgames</h2>
+    <%# <p>Explore some amazing boardgames below!</p> %>
+  </div>
   <!-- Section for images at the bottom -->
-<div class="image-gallery">
-<% @boardgames.limit(6).each do |boardgame| %>
-  <%= link_to boardgame_path(boardgame), class: 'text-decoration-none ' do %>
-    <div class="card-pick mt-3 bg-light">
-      <div>
-        <%= image_tag boardgame.thumbnail, alt: "default" %>
-      </div>
-      <div class="card-pick-info">
-          <h5><%= boardgame.name.first(29) %></h5>
-        <div class="d-flex card-icons gap-4 align-bottom">
+  <div data-refresh-list-target="list" class="cards mt-3">
+    <% @boardgames.limit(5).each do |boardgame| %>
+      <%= link_to boardgame_path(boardgame), class: 'text-decoration-none ' do %>
+        <div class="card-pick mt-3 bg-light">
           <div>
-            <i class="fa-solid fa-people-group align-middle"></i>
-            <span>
-              <%=boardgame.player_count%>
-            </span>
+            <%= image_tag boardgame.thumbnail, alt: "default" %>
           </div>
-          <div class="mx-auto">
-            <i class="fa-solid fa-list align-middle"></i>
-            <span>
-              <%=boardgame.category%>
-            </span>
+          <div class="card-pick-info">
+            <h5><%= boardgame.name.first(29) %></h5>
+            <div class="d-flex card-icons gap-4 align-bottom">
+              <div>
+                <i class="fa-solid fa-people-group align-middle"></i>
+                <span>
+                  <%=boardgame.player_count%>
+                </span>
+              </div>
+              <div class="mx-auto">
+                <i class="fa-solid fa-list align-middle"></i>
+                <span>
+                  <%=boardgame.category%>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  <% end %>
-<% end %>
+      <% end %>
+    <% end %>
+  </div>
   <%
 =begin%>
- <img src="https://cf.geekdo-images.com/W3Bsga_uLP9kO91gZ7H8yw__imagepage/img/M_3Vg1j2HlNgkv7PL2xl2BJE2bw=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2419375.jpg"
+  <img src="https://cf.geekdo-images.com/W3Bsga_uLP9kO91gZ7H8yw__imagepage/img/M_3Vg1j2HlNgkv7PL2xl2BJE2bw=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2419375.jpg"
        alt="Image 1" class="img-thumbnail-home">
   <img src="https://cf.geekdo-images.com/wg9oOLcsKvDesSUdZQ4rxw__imagepage/img/FS1RE8Ue6nk1pNbPI3l-OSapQGc=/fit-in/900x600/filters:no_upscale():strip_icc()/pic3536616.jpg"
        alt="Image 2" class="img-thumbnail-home">
@@ -88,10 +84,6 @@
        alt="Image 7" class="img-thumbnail-home">
   <%# <img src="https://cf.geekdo-images.com/EybxJlUc9rz7F7HVFLqsdw__imagepage/img/MwWN78LRcNAmP9wFrEsbuufPrRE=/fit-in/900x600/filters:no_upscale():strip_icc()/pic8378939.jpg"
        alt="Image 8" class="img-thumbnail-home"> %>
-<%
+  <%
 =end%>
-
-</div>
-
-
 </div>
