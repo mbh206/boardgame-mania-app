@@ -29,7 +29,7 @@ body:has(.banner) {
 }
 
 .carousel-home {
-  height: calc(100vh - 154px);
+  height: calc(100vh - 220px);
   width: 100%;
   overflow: hidden;
   // margin-top: 0px;
@@ -45,6 +45,9 @@ body:has(.banner) {
   top: 74%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-weight: bold;
 }
 
 .text-intro {
@@ -54,4 +57,28 @@ body:has(.banner) {
   left: 63%;
   width: 100%;
   transform: translate(-50%, -50%);
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-weight: bold;
+}
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap; /* Ensures images wrap to the next row if they don't fit */
+  gap: 15px;
+  justify-content: center;
+  margin-top: 0; /* Adds spacing between images */
+}
+
+.image-gallery img {
+  width: 157px; /* Adjust to the desired width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensures the image is cropped if necessary */
+  border: 2px solid #ddd; /* Adds a border around the images */
+  border-radius: 5px; /* Rounds corners of the images */
+}
+.image-banner h2 {
+  font-size: 37px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-weight: bold;
 }
