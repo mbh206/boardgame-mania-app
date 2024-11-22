@@ -13,6 +13,9 @@
           <li class="nav-item my-0 py-0">
             <%= link_to "Boardgames", "/boardgames", class: "nav-link" %>
           </li>
+          <li class="nav-item my-0 py-0">
+            <%= link_to "Hi, #{current_user.name}!", user_path(current_user), class: "nav-link" %>
+          </li>
           <li class="nav-item dropdown">
             <%= image_tag "#{rand(1..5)}.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end bg-dark" aria-labelledby="navbarDropdown">

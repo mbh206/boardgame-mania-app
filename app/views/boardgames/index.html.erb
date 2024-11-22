@@ -1,32 +1,25 @@
-<div class="container">
-  <!-- Search Form  Steve's add-->
-  <form method="get" action="<%= boardgames_path %>" class="my-4">
-    <div class="d-flex align-items-center gap-2">
-      <input
-      type="text"
-      name="query"
-      placeholder="Search games"
-      class="form-control"
-      value="<%= params[:query] %>">
-        <button type="submit" id="search-btn" class="btn">
-          <i class="fas fa-search"></i>
-        </button>
-        <%= link_to boardgames_path, class: "btn btn-warning d-flex align-items-center gap-1" do %>
-          <i class="fas fa-times"></i> Clear
-        <% end %>
-      </div>
-    </form>
-    <div class="cards">
-      <% @boardgames.each do |boardgame| %>
-        <%= link_to boardgame_path(boardgame), class: 'text-decoration-none ' do %>
-          <div class="card-pick mt-3 bg-light">
-            <%= image_tag boardgame.poster, alt: "default" %>
-            <div class="card-pick-info">
-              <h5><%= boardgame.name.first(39) %></h5>
-              <p><%= boardgame.category %></p>
-            </div>
-          </div>
-        <% end %>
+<div class="container" data-controller="refresh-list">
+  <div class="row align-items-center mt-3">
+    <div class="col-lg-11">
+      <%= form_with url: boardgames_path, method: :get, html: { data: { refresh_list_target: 'form' }, class: "form-group" } do |f| %>
+        <%= f.text_field :query,
+          class: "form-control",
+          placeholder: 'Type something here...',
+          value: params[:query],
+          data: {
+            refresh_list_target: 'searchInput',
+            action: "keyup->refresh-list#update"
+          } 
+          %>
+      <% end %>
+    </div>
+    <div class="col-lg-1">
+      <%= link_to boardgames_path, class: "btn btn-warning w-100" do %>
+        <i class="fa-solid fa-eraser text-secondary"></i>
       <% end %>
     </div>
   </div>
+  <div data-refresh-list-target="list" class="cards mt-3">
+    <%= render 'list', boardgames: @boardgames %>
+  </div>
+</div>

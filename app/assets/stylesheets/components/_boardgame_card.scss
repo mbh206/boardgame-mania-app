@@ -11,7 +11,7 @@
   border-radius: 4px;
   background-color: white;
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.2);
-
+  // position: relative;
 }
 .card-pick img {
   /*fixed*/
@@ -26,7 +26,10 @@
 }
 .card-pick-info {
   /*customizable*/
-  padding: 24px 16px;
+  padding: 1rem 0rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .card-pick-info h5 {
   /*customizable*/
@@ -39,6 +42,13 @@
   margin: 0;
   font-size:16px;
   color: black;
+}
+.card-icons {
+  color: #2F2F2F;
+  font-size:.7rem;
+  // position:absolute;
+  // bottom: 5;
+  // left: 5;
 }
 .card-pick:hover {
   /*customizable*/

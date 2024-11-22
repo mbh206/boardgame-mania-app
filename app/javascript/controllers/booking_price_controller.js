@@ -20,7 +20,6 @@ export default class extends Controller {
   static values = { price: Number };
 
   update() {
-    console.log("hi")
     const pricePerDay = parseInt(this.priceValue, 10);
 
     // make sure the user has chosen a start date and end date

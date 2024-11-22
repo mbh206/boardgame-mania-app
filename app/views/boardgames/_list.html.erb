@@ -1,0 +1,28 @@
+<% boardgames.each do |boardgame| %>
+  <%= link_to boardgame_path(boardgame), class: 'text-decoration-none ' do %>
+    <div class="card-pick mt-3 bg-light">
+      <div>
+        <%= image_tag boardgame.thumbnail, alt: "default" %>
+      </div>
+      <div class="card-pick-info">
+        <div>
+          <h5><%= boardgame.name.first(29) %></h5>
+        </div>
+        <div class="d-flex card-icons gap-4 align-middle mb-4">
+          <div>
+            <i class="fa-solid fa-people-group align-middle"></i>
+            <span>
+              <%=boardgame.player_count%>
+            </span>
+          </div>
+          <div class="mx-auto">
+            <i class="fa-solid fa-list align-middle"></i>
+            <span>
+              <%=boardgame.category%>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -20,11 +20,14 @@
         </button>
       </div>
       <div class="my-5 text-left">
-        <h3><%= @offer.user.name %>'s boardgame!</h3>
+        <h3>
+          <%= image_tag "#{rand(1..5)}.png", class: "review-avatar dropdown-toggle p-1", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= @offer.user.name %>
+          's boardgame!
+        </h3>
       </div>
       <div class="my-5 text-left">
-        <h4>Condition:</h4>
-        <p><%= @offer.title %></p>
+        <h4>Condition: <%= @offer.title %></h4>
       </div>
     </div>
     <div class="col col-4 mt-0">
@@ -35,7 +38,11 @@
           <p>End Date: <%= f.input :end_date, html5: true, label: false, input_html: { data: { booking_price_target: 'end_date', action: 'change->booking-price#update' }, class: 'rental-date', min: Date.today }%> </p>
           <p  class="fs-3">Price: $<%= @offer.price.round %>/day</p>
           <p class='fs-3' data-booking-price-target='price'></p>
-          <%= f.submit "Book Now", class: "btn btn-warning bg-gradient" %>
+          <%if @offer.user != current_user%>
+            <%= f.submit "Book Now", class: "btn btn-warning bg-gradient" %>
+          <% else %>
+            <%= f.submit "Book Now", class: "btn btn-secondary disabled" %>
+          <% end %>
         <% end %>
       </div>
       <div class="m-3">
@@ -43,11 +50,22 @@
         <% @reviews.each do |review| %>
           <p>
             <%= image_tag "#{rand(1..5)}.png", class: "review-avatar dropdown-toggle p-1", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <%= review.description%> -
-            <% review.rating.times do %>
-              <i id="star" class="fa-solid fa-star"></i>
-            <% end %>
+            <%=  review.user.name%>
           </p>
+          <div>
+            <div>
+              <% review.rating.times do %>
+                <i id="star" class="fa-solid fa-star"></i>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <i class="fa-solid fa-star"></i>
+              <% end %>
+            </div>
+            <div>
+              <%= review.description%>
+            </div>
+          </div>
+          <hr>
         <% end %>
       </div>
     </div>
