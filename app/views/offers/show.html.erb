@@ -38,7 +38,11 @@
           <p>End Date: <%= f.input :end_date, html5: true, label: false, input_html: { data: { booking_price_target: 'end_date', action: 'change->booking-price#update' }, class: 'rental-date', min: Date.today }%> </p>
           <p  class="fs-3">Price: $<%= @offer.price.round %>/day</p>
           <p class='fs-3' data-booking-price-target='price'></p>
-          <%= f.submit "Book Now", class: "btn btn-warning bg-gradient" %>
+          <%if @offer.user != current_user%>
+            <%= f.submit "Book Now", class: "btn btn-warning bg-gradient" %>
+          <% else %>
+            <%= f.submit "Book Now", class: "btn btn-secondary disabled" %>
+          <% end %>
         <% end %>
       </div>
       <div class="m-3">
