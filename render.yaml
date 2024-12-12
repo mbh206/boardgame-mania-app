@@ -1,12 +1,12 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
+  - name: Boardgame Mania
+    databaseName: Boardgame Mania
+    user: Boardgame Mania
     plan: free
 
 services:
   - type: web
-    name: mysite
+    name: Boardgame Mania
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
@@ -15,7 +15,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: mysite
+          name: boardgame-mania
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
