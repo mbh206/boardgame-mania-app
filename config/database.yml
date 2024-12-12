@@ -79,6 +79,6 @@ test:
 #
 production:
   <<: *default
-  database: boardgame_mania_app_production
-  username: boardgame_mania_app
-  password: <%= ENV["BOARDGAME_MANIA_APP_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  # username: boardgame_mania_app
+  # password: <%= ENV["BOARDGAME_MANIA_APP_DATABASE_PASSWORD"] %>
